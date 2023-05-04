@@ -1,10 +1,10 @@
+import { Header } from "./components/header";
+
  export function App() {
-  
+
   return (
     <>
-     <h1>
-      DevBlog
-     </h1>
+    <Header/>
     </>
   )
 }
