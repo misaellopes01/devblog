@@ -2,23 +2,23 @@
 
  DevTeam Oficial Blog
  <hr>
-## Version 1.0 features: 
-[ :loudspeaker: :loudspeaker: ] system rules:
-.
-` User Authentication`
-` Role-based Access Control`
-` Content Management System`
-` Commenting System`
+## Version 1.0 features: <br />
+[ :loudspeaker: :loudspeaker: ] system rules: <br />
 
-[ :loudspeaker: :loudspeaker: ] Chosen functional requisites:
+`User Authentication` <br />
+`Role-based Access Control` <br />
+`Content Management System` <br />
+`Commenting System` <br />
+<br />
+[ :loudspeaker: :loudspeaker: ] Chosen functional requisites: <br />
 
- `User Registration and Login` [] - Front  [] - Back
- [] `Password Recovery` [] - Front  [] - Back
- [] `Post CRUD` [] - Front  [] - Back
- [] `Post Creation, Editing and Delete by User Creator LoggedIn` [] - Front  [] - Back
- [] `Commenting CRUD` [] - Front  [] - Back
- [] `Commenting Creation, Editing and Delete by User Creator LoggedIn` [] - Front  [] - Back
- [] `Responsive UI/UX for WEB and Mobile App` [] - Front  [] - Back
- [] `Security and Privacy` [] - Front  [] - Back
- [] `Admin Platform Full Management` [] - Front  [] - Back
- [] `Like on posts and Comments by Users LoggedIn` [] - Front  [] - Back
+- [ ] `User Registration and Login`
+- [ ] `Password Recovery`
+- [ ] `Post CRUD`
+- [ ] `Post Creation, Editing and Delete by User Creator LoggedIn`
+- [ ] `Commenting CRUD`
+- [ ] `Commenting Creation, Editing and Delete by User Creator LoggedIn`
+- [ ] `Responsive UI/UX for WEB and Mobile App`
+- [ ] `Security and Privacy`
+- [ ] `Admin Platform Full Management`
+- [ ] `Like on posts and Comments by Users LoggedIn`
