@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+    database:
+        image: postgres
+        container_name: devblog
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_USER=devteam
+            - POSTGRES_PASSWORD=programming
+            - POSTGRES_DB=devDB
+        volumes:
+            - pgdata:/data/postgres
+
+volumes: 
+    pgdata:
+        driver: local

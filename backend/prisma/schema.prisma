@@ -6,13 +6,50 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id    String @id @default(uuid())
-  email String @unique
+  id        String    @id @default(uuid())
+  email     String    @unique
+  name      String
+  password  String
+  role      Role      @default(USER)
+  createdAt DateTime  @default(now())
+  Post      Post[]
+  Comment   Comment[]
 
   @@map("users")
+}
+
+model Post {
+  id         String    @id @default(uuid())
+  title      String
+  content    String
+  author     User      @relation(fields: [authorId], references: [id])
+  authorId   String
+  createdAt  DateTime  @default(now())
+  uppdatedAt DateTime  @updatedAt
+  Comment    Comment[]
+
+  @@map("posts")
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("comments")
+}
+
+enum Role {
+  USER
+  ADMIN
 }
