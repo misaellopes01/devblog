@@ -1,9 +1,39 @@
 import { Post } from '../entities/post.entity';
 
+export interface CreatedPostProps {
+  id: string;
+  title: string;
+  content: string;
+  createdAt: Date;
+  updatedAt: Date;
+  author: {
+    email: string;
+    name: string;
+  };
+}
+export interface AllPostsProps {
+  id: true;
+  title: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  author: {
+    email: string;
+    name: string;
+  };
+  Comment: {
+    content: string;
+    author: {
+      email: string;
+      name: string;
+    };
+  }[];
+}
+
 export abstract class PostRepository {
-  abstract create(user: Post): Promise<Post>;
-  abstract showPosts(): Promise<Post[]>;
-  abstract showPost(): Promise<Post>;
+  abstract create(post: Post): Promise<CreatedPostProps>;
+  abstract showPosts(): Promise<any[]>;
+  abstract showPost(postId: string): Promise<Post>;
   abstract updatePost(
     postId: string,
     title?: string,

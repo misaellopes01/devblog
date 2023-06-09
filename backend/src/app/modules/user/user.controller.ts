@@ -10,19 +10,22 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UserProfileDTO } from './mappers/userProfileDTO';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+  async create(@Body() createUserDto: CreateUserDto) {
+    const user = await this.userService.create(createUserDto);
+    return UserProfileDTO.toDomain(user);
   }
 
-  @Get('/list')
-  findAll() {
-    return this.userService.findAll();
+  @Get('/all')
+  async findAll() {
+    const users = await this.userService.findAll();
+    return users.map(UserProfileDTO.toDomain);
   }
 
   @Get(':id')

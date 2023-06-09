@@ -11,13 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
 const common_1 = require("@nestjs/common");
+const bcrypt = require("bcrypt");
 const user_repository_1 = require("./repositories/user.repository");
+const user_entity_1 = require("./entities/user.entity");
 let UserService = class UserService {
     constructor(usersRepository) {
         this.usersRepository = usersRepository;
     }
-    create(createUserDto) {
-        return 'This action adds a new user';
+    async create(createUserDto) {
+        const hashedPassword = await bcrypt.hash(createUserDto.password, 8);
+        createUserDto.password = hashedPassword;
+        const newUser = new user_entity_1.User(createUserDto);
+        const createdUser = await this.usersRepository.create(newUser);
+        return createdUser;
     }
     async findAll() {
         return await this.usersRepository.showUsers();

@@ -11,6 +11,8 @@ const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("./prisma/prisma.service");
 const user_repository_1 = require("../../app/modules/user/repositories/user.repository");
 const prisma_users_repository_1 = require("./prisma/repositories/prisma-users.repository");
+const post_repository_1 = require("../../app/modules/post/repositories/post.repository");
+const prisma_posts_repository_1 = require("./prisma/repositories/prisma-posts.repository");
 let DatabaseModule = class DatabaseModule {
 };
 DatabaseModule = __decorate([
@@ -21,8 +23,12 @@ DatabaseModule = __decorate([
                 provide: user_repository_1.UserRepository,
                 useClass: prisma_users_repository_1.PrismaUserRepository,
             },
+            {
+                provide: post_repository_1.PostRepository,
+                useClass: prisma_posts_repository_1.PrismaPostRepository,
+            },
         ],
-        exports: [user_repository_1.UserRepository],
+        exports: [user_repository_1.UserRepository, post_repository_1.PostRepository],
     })
 ], DatabaseModule);
 exports.DatabaseModule = DatabaseModule;

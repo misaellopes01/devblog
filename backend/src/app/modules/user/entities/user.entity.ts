@@ -7,7 +7,7 @@ export interface UserProps {
   name: string;
   email: string;
   password?: string;
-  role: Role;
+  role?: Role;
   createdAt?: Date;
 }
 
