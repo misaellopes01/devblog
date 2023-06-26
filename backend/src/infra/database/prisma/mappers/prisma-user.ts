@@ -18,7 +18,6 @@ export class PrismaUserMapper {
       id: raw.id,
       name: raw.name,
       email: raw.email,
-      password: raw.password,
       role: raw.role,
       createdAt: raw.createdAt,
     });

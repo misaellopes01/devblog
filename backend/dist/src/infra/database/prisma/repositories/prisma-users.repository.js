@@ -17,6 +17,14 @@ let PrismaUserRepository = class PrismaUserRepository {
     constructor(prisma) {
         this.prisma = prisma;
     }
+    async findOne(id) {
+        const user = await this.prisma.user.findUnique({
+            where: {
+                id,
+            },
+        });
+        return prisma_user_1.PrismaUserMapper.toDomain(user);
+    }
     async create(user) {
         const savedUser = await this.prisma.user.create({
             data: {

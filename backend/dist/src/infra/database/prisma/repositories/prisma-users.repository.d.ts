@@ -4,6 +4,7 @@ import { PrismaService } from '../prisma.service';
 export declare class PrismaUserRepository implements UserRepository {
     private prisma;
     constructor(prisma: PrismaService);
+    findOne(id: string): Promise<User>;
     create(user: User): Promise<User>;
     showUsers(): Promise<User[]>;
 }

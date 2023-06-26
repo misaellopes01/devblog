@@ -28,8 +28,8 @@ let UserService = class UserService {
     async findAll() {
         return await this.usersRepository.showUsers();
     }
-    findOne(id) {
-        return `This action returns a #${id} user`;
+    async findOne(id) {
+        return await this.usersRepository.findOne(id);
     }
     update(id, updateUserDto) {
         return `This action updates a #${id} user`;

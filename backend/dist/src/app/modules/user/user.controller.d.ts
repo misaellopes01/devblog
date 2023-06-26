@@ -18,7 +18,7 @@ export declare class UserController {
         role: import("./entities/user.entity").Role;
         createdAt: Date;
     }[]>;
-    findOne(id: string): string;
+    findOne(id: string): Promise<import("./entities/user.entity").User>;
     update(id: string, updateUserDto: UpdateUserDto): string;
     remove(id: string): string;
 }

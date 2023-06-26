@@ -31,7 +31,7 @@ let UserController = class UserController {
         return users.map(userProfileDTO_1.UserProfileDTO.toDomain);
     }
     findOne(id) {
-        return this.userService.findOne(+id);
+        return this.userService.findOne(id);
     }
     update(id, updateUserDto) {
         return this.userService.update(+id, updateUserDto);
