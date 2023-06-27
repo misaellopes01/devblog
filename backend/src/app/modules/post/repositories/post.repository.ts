@@ -33,9 +33,10 @@ export interface AllPostsProps {
 export abstract class PostRepository {
   abstract create(post: Post): Promise<CreatedPostProps>;
   abstract showPosts(): Promise<any[]>;
-  abstract showPost(postId: string): Promise<Post>;
+  abstract showPost(postId: string): Promise<any>;
   abstract updatePost(
     postId: string,
+    authorId: string,
     title?: string,
     content?: string,
   ): Promise<void>;

@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { UserRepository } from 'src/app/modules/user/repositories/user.repository';
 import { PrismaService } from '../prisma.service';
 import {
   CreatedPostProps,
@@ -11,6 +10,7 @@ import { PrismaPostMapper } from '../mappers/prisma-post';
 @Injectable()
 export class PrismaPostRepository implements PostRepository {
   constructor(private prisma: PrismaService) {}
+
   async create(post: Post): Promise<CreatedPostProps> {
     const postToPrisma = PrismaPostMapper.toPrisma(post);
     const postCreated = await this.prisma.post.create({
@@ -32,29 +32,19 @@ export class PrismaPostRepository implements PostRepository {
 
     return PrismaPostMapper.toDomain(postCreated);
   }
+
   async showPosts(): Promise<any[]> {
     const postCreated = await this.prisma.post.findMany({
-      select: {
-        id: true,
-        title: true,
-        content: true,
-        createdAt: true,
-        uppdatedAt: true,
+      include: {
+        _count: {
+          select: {
+            Comment: true,
+          },
+        },
         author: {
           select: {
             email: true,
             name: true,
-          },
-        },
-        Comment: {
-          select: {
-            content: true,
-            author: {
-              select: {
-                email: true,
-                name: true,
-              },
-            },
           },
         },
       },
@@ -62,13 +52,42 @@ export class PrismaPostRepository implements PostRepository {
 
     return postCreated;
   }
-  showPost(): Promise<Post> {
-    throw new Error('Method not implemented.');
+
+  async showPost(postId: string): Promise<any> {
+    return await this.prisma.post.findUnique({
+      where: {
+        id: postId,
+      },
+      include: {
+        Comment: true,
+        author: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
   }
-  updatePost(postId: string, title?: string, content?: string): Promise<void> {
-    throw new Error('Method not implemented.');
+
+  async updatePost(
+    postId: string,
+    authorId: string,
+    title: string,
+    content: string,
+  ): Promise<void> {
+    await this.prisma.post.updateMany({
+      where: {
+        id: postId,
+        authorId,
+      },
+      data: {
+        title: title,
+        content: content,
+      },
+    });
   }
-  deletePost(postId: string): Promise<void> {
+
+  async deletePost(postId: string): Promise<void> {
     throw new Error('Method not implemented.');
   }
 }

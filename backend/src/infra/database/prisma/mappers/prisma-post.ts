@@ -1,5 +1,3 @@
-import { Post as RawPost } from '@prisma/client';
-import { raw } from 'express';
 import { Post } from 'src/app/modules/post/entities/post.entity';
 import { CreatedPostProps } from 'src/app/modules/post/repositories/post.repository';
 type ModifiedCreatedPostProps = Omit<CreatedPostProps, 'updatedAt'> & {

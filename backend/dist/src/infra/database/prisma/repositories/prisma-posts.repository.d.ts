@@ -6,7 +6,7 @@ export declare class PrismaPostRepository implements PostRepository {
     constructor(prisma: PrismaService);
     create(post: Post): Promise<CreatedPostProps>;
     showPosts(): Promise<any[]>;
-    showPost(): Promise<Post>;
-    updatePost(postId: string, title?: string, content?: string): Promise<void>;
+    showPost(postId: string): Promise<any>;
+    updatePost(postId: string, authorId: string, title: string, content: string): Promise<void>;
     deletePost(postId: string): Promise<void>;
 }

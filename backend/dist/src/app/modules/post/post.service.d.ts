@@ -5,8 +5,8 @@ export declare class PostService {
     private postsRepository;
     constructor(postsRepository: PostRepository);
     create(createPostDto: CreatePostDto): Promise<import("./repositories/post.repository").CreatedPostProps>;
-    findAll(): string;
-    findOne(id: number): string;
-    update(id: number, updatePostDto: UpdatePostDto): string;
+    findAll(): Promise<any[]>;
+    findOne(id: string): Promise<any>;
+    update(id: string, { authorId, content, title }: UpdatePostDto): Promise<void>;
     remove(id: number): string;
 }

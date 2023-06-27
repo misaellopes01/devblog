@@ -22,14 +22,15 @@ let PostService = class PostService {
         const createdPost = await this.postsRepository.create(newPost);
         return createdPost;
     }
-    findAll() {
-        return `This action returns all post`;
+    async findAll() {
+        return await this.postsRepository.showPosts();
     }
-    findOne(id) {
-        return `This action returns a #${id} post`;
+    async findOne(id) {
+        return await this.postsRepository.showPost(id);
     }
-    update(id, updatePostDto) {
-        return `This action updates a #${id} post`;
+    async update(id, { authorId, content, title }) {
+        const postId = id;
+        return await this.postsRepository.updatePost(postId, authorId, title, content);
     }
     remove(id) {
         return `This action removes a #${id} post`;

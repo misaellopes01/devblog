@@ -14,16 +14,22 @@ export class PostService {
     return createdPost;
   }
 
-  findAll() {
-    return `This action returns all post`;
+  async findAll() {
+    return await this.postsRepository.showPosts();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} post`;
+  async findOne(id: string) {
+    return await this.postsRepository.showPost(id);
   }
 
-  update(id: number, updatePostDto: UpdatePostDto) {
-    return `This action updates a #${id} post`;
+  async update(id: string, { authorId, content, title }: UpdatePostDto) {
+    const postId = id;
+    return await this.postsRepository.updatePost(
+      postId,
+      authorId,
+      title,
+      content,
+    );
   }
 
   remove(id: number) {

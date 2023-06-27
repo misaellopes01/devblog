@@ -39,40 +39,50 @@ let PrismaPostRepository = class PrismaPostRepository {
     }
     async showPosts() {
         const postCreated = await this.prisma.post.findMany({
-            select: {
-                id: true,
-                title: true,
-                content: true,
-                createdAt: true,
-                uppdatedAt: true,
+            include: {
+                _count: {
+                    select: {
+                        Comment: true,
+                    },
+                },
                 author: {
                     select: {
                         email: true,
                         name: true,
                     },
                 },
-                Comment: {
-                    select: {
-                        content: true,
-                        author: {
-                            select: {
-                                email: true,
-                                name: true,
-                            },
-                        },
-                    },
-                },
             },
         });
         return postCreated;
     }
-    showPost() {
-        throw new Error('Method not implemented.');
+    async showPost(postId) {
+        return await this.prisma.post.findUnique({
+            where: {
+                id: postId,
+            },
+            include: {
+                Comment: true,
+                author: {
+                    select: {
+                        name: true,
+                    },
+                },
+            },
+        });
     }
-    updatePost(postId, title, content) {
-        throw new Error('Method not implemented.');
+    async updatePost(postId, authorId, title, content) {
+        await this.prisma.post.updateMany({
+            where: {
+                id: postId,
+                authorId,
+            },
+            data: {
+                title: title,
+                content: content,
+            },
+        });
     }
-    deletePost(postId) {
+    async deletePost(postId) {
         throw new Error('Method not implemented.');
     }
 };
