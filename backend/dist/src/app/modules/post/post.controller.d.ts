@@ -1,4 +1,5 @@
 import { PostService } from './post.service';
+import { updatePostDto } from './dto/create-post.dto';
 export declare class PostController {
     private readonly postService;
     constructor(postService: PostService);
@@ -9,10 +10,6 @@ export declare class PostController {
     }): Promise<import("./repositories/post.repository").CreatedPostProps>;
     findAll(): Promise<any[]>;
     findOne(id: string): Promise<any>;
-    update(id: string, { authorId, title, content }: {
-        authorId: any;
-        title: any;
-        content: any;
-    }): Promise<void>;
-    remove(id: string): string;
+    update(id: string, { authorId, title, content }: updatePostDto): Promise<void>;
+    remove(id: string): Promise<void>;
 }

@@ -40,6 +40,23 @@ let PrismaUserRepository = class PrismaUserRepository {
         const users = await this.prisma.user.findMany();
         return users.map(prisma_user_1.PrismaUserMapper.toDomain);
     }
+    async deleteAccount(id) {
+        await this.prisma.user.delete({ where: { id } });
+    }
+    async updateUserInfo(userId, { name, role }) {
+        await this.prisma.user.update({
+            where: {
+                id: userId,
+            },
+            data: {
+                name: name,
+                role: role,
+            },
+        });
+    }
+    async updateAvatar(avatarUrl) {
+        throw new Error('Method not implemented.');
+    }
 };
 PrismaUserRepository = __decorate([
     (0, common_1.Injectable)(),

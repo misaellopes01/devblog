@@ -8,8 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { PostService } from './post.service';
-import { CreatePostDto } from './dto/create-post.dto';
-import { UpdatePostDto } from './dto/update-post.dto';
+import { CreatePostDto, updatePostDto } from './dto/create-post.dto';
 
 @Controller('post')
 export class PostController {
@@ -36,18 +35,21 @@ export class PostController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() { authorId, title, content }) {
+  update(
+    @Param('id') id: string,
+    @Body() { authorId, title, content }: updatePostDto,
+  ) {
     const updatePostDto = {
-      authorId: String(authorId),
-      content: String(content),
-      title: String(title),
+      authorId,
+      content,
+      title,
     };
     return this.postService.update(id, updatePostDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.postService.remove(+id);
+    return this.postService.remove(id);
   }
   // Get Post Cover
   // @Get('me')

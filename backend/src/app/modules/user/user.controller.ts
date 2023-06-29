@@ -29,17 +29,43 @@ export class UserController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.userService.findOne(id);
   }
   // features not coded
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto);
+  async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.userService.update(id, updateUserDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.userService.remove(+id);
+  async remove(@Param('id') id: string) {
+    return this.userService.remove(id);
   }
+
+  // Get User Profile with avatar
+  // @Get('me')
+  // async getMe(@GetUser('') user: UserProfileDTO) {
+  //   user.avatar_url = `http://localhost:3000/avatar/${user.avatar_url}`;
+  //   return user
+  // }
+  // Upload Avatar
+  // @Patch('avatar/update')
+  // @UseInterceptors(
+  //   FileInterceptor('file', {
+  //     storage: diskStorage({
+  //       destination: './uploads/avatar',
+  //       filename: (req, file, cb) => {
+  //         const randomName = Array(32)
+  //           .fill(null)
+  //           .map(() => Math.round(Math.random() * 16).toString(16))
+  //           .join('');
+  //         return cb(null, `${randomName}${extname(file.originalname)}`);
+  //       },
+  //     }),
+  //   }),
+  // )
+  // async uploadFile(@GetUser('') user: User, @UploadedFile() file) {
+  //   return await this.userService.updateUserAvatar(user.id, file.filename)
+  // }
 }

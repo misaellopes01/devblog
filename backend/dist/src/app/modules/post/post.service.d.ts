@@ -8,5 +8,5 @@ export declare class PostService {
     findAll(): Promise<any[]>;
     findOne(id: string): Promise<any>;
     update(id: string, { authorId, content, title }: UpdatePostDto): Promise<void>;
-    remove(id: number): string;
+    remove(id: string): Promise<void>;
 }

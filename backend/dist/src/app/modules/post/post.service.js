@@ -26,14 +26,18 @@ let PostService = class PostService {
         return await this.postsRepository.showPosts();
     }
     async findOne(id) {
-        return await this.postsRepository.showPost(id);
+        const post = await this.postsRepository.showPost(id);
+        if (!post) {
+            throw new common_1.NotFoundException('Post não existente');
+        }
+        return post;
     }
     async update(id, { authorId, content, title }) {
         const postId = id;
         return await this.postsRepository.updatePost(postId, authorId, title, content);
     }
-    remove(id) {
-        return `This action removes a #${id} post`;
+    async remove(id) {
+        return await this.postsRepository.deletePost(id);
     }
 };
 PostService = __decorate([

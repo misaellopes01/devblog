@@ -25,11 +25,11 @@ export class UserService {
     return await this.usersRepository.findOne(id);
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: string, { name, role }: UpdateUserDto) {
+    return await this.usersRepository.updateUserInfo(id, { name, role });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: string) {
+    return await this.usersRepository.deleteAccount(id);
   }
 }

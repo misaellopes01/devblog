@@ -35,14 +35,14 @@ let PostController = class PostController {
     }
     update(id, { authorId, title, content }) {
         const updatePostDto = {
-            authorId: String(authorId),
-            content: String(content),
-            title: String(title),
+            authorId,
+            content,
+            title,
         };
         return this.postService.update(id, updatePostDto);
     }
     remove(id) {
-        return this.postService.remove(+id);
+        return this.postService.remove(id);
     }
 };
 __decorate([

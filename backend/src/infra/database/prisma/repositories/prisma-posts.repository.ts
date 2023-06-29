@@ -88,6 +88,6 @@ export class PrismaPostRepository implements PostRepository {
   }
 
   async deletePost(postId: string): Promise<void> {
-    throw new Error('Method not implemented.');
+    await this.prisma.post.delete({ where: { id: postId } });
   }
 }

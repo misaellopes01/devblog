@@ -83,7 +83,7 @@ let PrismaPostRepository = class PrismaPostRepository {
         });
     }
     async deletePost(postId) {
-        throw new Error('Method not implemented.');
+        await this.prisma.post.delete({ where: { id: postId } });
     }
 };
 PrismaPostRepository = __decorate([

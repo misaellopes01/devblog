@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { PostRepository } from './repositories/post.repository';
@@ -19,7 +19,11 @@ export class PostService {
   }
 
   async findOne(id: string) {
-    return await this.postsRepository.showPost(id);
+    const post = await this.postsRepository.showPost(id);
+    if (!post) {
+      throw new NotFoundException('Post não existente');
+    }
+    return post;
   }
 
   async update(id: string, { authorId, content, title }: UpdatePostDto) {
@@ -32,7 +36,7 @@ export class PostService {
     );
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} post`;
+  async remove(id: string) {
+    return await this.postsRepository.deletePost(id);
   }
 }

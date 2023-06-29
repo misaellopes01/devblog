@@ -31,11 +31,11 @@ let UserService = class UserService {
     async findOne(id) {
         return await this.usersRepository.findOne(id);
     }
-    update(id, updateUserDto) {
-        return `This action updates a #${id} user`;
+    async update(id, { name, role }) {
+        return await this.usersRepository.updateUserInfo(id, { name, role });
     }
-    remove(id) {
-        return `This action removes a #${id} user`;
+    async remove(id) {
+        return await this.usersRepository.deleteAccount(id);
     }
 };
 UserService = __decorate([

@@ -19,6 +19,6 @@ export declare class UserController {
         createdAt: Date;
     }[]>;
     findOne(id: string): Promise<import("./entities/user.entity").User>;
-    update(id: string, updateUserDto: UpdateUserDto): string;
-    remove(id: string): string;
+    update(id: string, updateUserDto: UpdateUserDto): Promise<void>;
+    remove(id: string): Promise<void>;
 }
