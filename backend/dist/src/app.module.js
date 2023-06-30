@@ -12,6 +12,7 @@ const config_1 = require("@nestjs/config");
 const user_module_1 = require("./app/modules/user/user.module");
 const database_module_1 = require("./infra/database/database.module");
 const post_module_1 = require("./app/modules/post/post.module");
+const comment_module_1 = require("./app/modules/comment/comment.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -23,6 +24,7 @@ AppModule = __decorate([
             user_module_1.UserModule,
             database_module_1.DatabaseModule,
             post_module_1.PostModule,
+            comment_module_1.CommentModule,
         ],
         controllers: [],
         providers: [],

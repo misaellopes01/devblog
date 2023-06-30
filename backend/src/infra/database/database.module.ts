@@ -4,6 +4,8 @@ import { UserRepository } from 'src/app/modules/user/repositories/user.repositor
 import { PrismaUserRepository } from './prisma/repositories/prisma-users.repository';
 import { PostRepository } from 'src/app/modules/post/repositories/post.repository';
 import { PrismaPostRepository } from './prisma/repositories/prisma-posts.repository';
+import { CommentRepository } from 'src/app/modules/comment/repositories/comment.repository';
+import { PrismaCommentRepository } from './prisma/repositories/prisma-comment.repository';
 
 @Module({
   providers: [
@@ -16,7 +18,11 @@ import { PrismaPostRepository } from './prisma/repositories/prisma-posts.reposit
       provide: PostRepository,
       useClass: PrismaPostRepository,
     },
+    {
+      provide: CommentRepository,
+      useClass: PrismaCommentRepository,
+    },
   ],
-  exports: [UserRepository, PostRepository],
+  exports: [UserRepository, PostRepository, CommentRepository],
 })
 export class DatabaseModule {}

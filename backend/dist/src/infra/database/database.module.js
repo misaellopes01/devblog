@@ -13,6 +13,8 @@ const user_repository_1 = require("../../app/modules/user/repositories/user.repo
 const prisma_users_repository_1 = require("./prisma/repositories/prisma-users.repository");
 const post_repository_1 = require("../../app/modules/post/repositories/post.repository");
 const prisma_posts_repository_1 = require("./prisma/repositories/prisma-posts.repository");
+const comment_repository_1 = require("../../app/modules/comment/repositories/comment.repository");
+const prisma_comment_repository_1 = require("./prisma/repositories/prisma-comment.repository");
 let DatabaseModule = class DatabaseModule {
 };
 DatabaseModule = __decorate([
@@ -27,8 +29,12 @@ DatabaseModule = __decorate([
                 provide: post_repository_1.PostRepository,
                 useClass: prisma_posts_repository_1.PrismaPostRepository,
             },
+            {
+                provide: comment_repository_1.CommentRepository,
+                useClass: prisma_comment_repository_1.PrismaCommentRepository,
+            },
         ],
-        exports: [user_repository_1.UserRepository, post_repository_1.PostRepository],
+        exports: [user_repository_1.UserRepository, post_repository_1.PostRepository, comment_repository_1.CommentRepository],
     })
 ], DatabaseModule);
 exports.DatabaseModule = DatabaseModule;
