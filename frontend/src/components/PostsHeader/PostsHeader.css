@@ -1,0 +1,39 @@
+.posts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin-left: 12rem;
+  color: var(--black-color);
+  font-size: 3.6rem;
+  line-height: 5.4rem;
+}
+
+.more-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+  cursor: pointer;
+  margin-right: 12rem;
+}
+
+.more-options a {
+  color: var(--black-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+}
+
+.more-options a:hover {
+  border-bottom: 1px solid var(--black-color);
+  padding: 0
+}
+
+.more-options span {
+  font-size: 1.8rem;
+  line-height: 3.4rem
+}
