@@ -41,20 +41,31 @@ export class PrismaUserRepository implements UserRepository {
     await this.prisma.user.delete({ where: { id } });
   }
 
-  async updateUserInfo(
-    userId: string,
-    { name, role }: UpdateUserDto,
-  ): Promise<void> {
+  async updateUserInfo(userId: string, { name }: UpdateUserDto): Promise<void> {
     await this.prisma.user.update({
       where: {
         id: userId,
       },
       data: {
         name: name,
-        role: role,
       },
     });
   }
+  // Update user role by admin
+  // async updateUserInfo(
+  //   userId: string,
+  //   { name, role }: UpdateUserDto,
+  // ): Promise<void> {
+  //   await this.prisma.user.update({
+  //     where: {
+  //       id: userId,
+  //     },
+  //     data: {
+  //       name: name,
+  //       role: role,
+  //     },
+  //   });
+  // }
   // To Implement later
   async updateAvatar(avatarUrl: string): Promise<void> {
     throw new Error('Method not implemented.');

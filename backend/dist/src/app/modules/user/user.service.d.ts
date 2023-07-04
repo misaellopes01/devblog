@@ -8,6 +8,6 @@ export declare class UserService {
     create(createUserDto: CreateUserDto): Promise<User>;
     findAll(): Promise<User[]>;
     findOne(id: string): Promise<User>;
-    update(id: string, { name, role }: UpdateUserDto): Promise<void>;
+    update(id: string, { name }: UpdateUserDto): Promise<void>;
     remove(id: string): Promise<void>;
 }

@@ -9,6 +9,6 @@ export declare class PrismaUserRepository implements UserRepository {
     create(user: User): Promise<User>;
     showUsers(): Promise<User[]>;
     deleteAccount(id: string): Promise<void>;
-    updateUserInfo(userId: string, { name, role }: UpdateUserDto): Promise<void>;
+    updateUserInfo(userId: string, { name }: UpdateUserDto): Promise<void>;
     updateAvatar(avatarUrl: string): Promise<void>;
 }

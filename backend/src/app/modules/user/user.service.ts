@@ -25,8 +25,9 @@ export class UserService {
     return await this.usersRepository.findOne(id);
   }
 
-  async update(id: string, { name, role }: UpdateUserDto) {
-    return await this.usersRepository.updateUserInfo(id, { name, role });
+  async update(id: string, { name }: UpdateUserDto) {
+    console.log(name);
+    return await this.usersRepository.updateUserInfo(id, { name });
   }
 
   async remove(id: string) {

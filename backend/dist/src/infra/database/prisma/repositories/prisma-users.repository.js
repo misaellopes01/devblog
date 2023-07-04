@@ -43,14 +43,13 @@ let PrismaUserRepository = class PrismaUserRepository {
     async deleteAccount(id) {
         await this.prisma.user.delete({ where: { id } });
     }
-    async updateUserInfo(userId, { name, role }) {
+    async updateUserInfo(userId, { name }) {
         await this.prisma.user.update({
             where: {
                 id: userId,
             },
             data: {
                 name: name,
-                role: role,
             },
         });
     }
