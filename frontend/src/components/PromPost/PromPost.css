@@ -1,58 +1,61 @@
-.small-post{
+/* POSTS */
+
+
+.prom-post{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 40rem;
-  height: 28.5rem;
+  width: 50.9rem;
+  height: 60.5rem;
   border-radius: 7px;
   border: 0.761px solid rgba(0, 0, 0, 0.50);
   background: #FFF;
   overflow: hidden;
-  /* align-items: center; */
 }
 
-.small-post > img {
-  width: 42.8rem;
-  height: 15.6rem;
+.prom-post > img {
+  width: 52.2rem;
+  height: 34.4rem;
 }
 
-.small-post-info {
-  margin-top: -3rem;
+.prom-post-info {
+  margin-top: -2rem;
   padding: 4.8rem;
 }
 
-.small-post-info > span{
+.prom-post-info > span{
   color: #000;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   font-weight: 700;
   line-height: 2.7rem;
   letter-spacing: -0.274px;
 }
 
-.small-author {
+.prom-author {
   display: flex;
   align-content: center;
   justify-content: flex-start;
   gap: 1.4rem;
 }
 
-.small-author span {
+.prom-author span {
   color: rgba(0, 0, 0, 0.50);
-  font-size: .9rem;
+  font-size: 10.66px;
   font-weight: 400;
   line-height: 22.844px;
   letter-spacing: -0.16px;
 }
 
-.small-post-content {
-  margin-top: -8rem;
+.prom-post-content {
+  margin-top: -7rem;
   padding: 4.8rem;
 
 }
 
-.small-post-content p {
+.prom-post-content p {
   color: rgba(0, 0, 0, 0.80);
-  font-size: .9rem;
-  line-height: 1.5rem;
+  font-size: 1.3rem;
+  line-height: 2.2rem;
   letter-spacing: -0.206px;
 }
+

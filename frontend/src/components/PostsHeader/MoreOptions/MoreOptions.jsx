@@ -8,7 +8,7 @@ export function MoreOptions() {
       <div className="more-options">
           <a href="#">
           <span>Mais</span>
-          <ArrowRight size={15}/>
+          <ArrowRight size={12}/>
           </a>
           
         </div>
