@@ -4,7 +4,7 @@ import imgLogo from "../../assets/devBlogLogo.svg"
 export function Header() {
   return (
     <>
-       <div className="header">
+       <header className="header">
           <div className="header-content-wrapper margin-uni ">
           <div className="imge-logo">
               <img src={imgLogo} alt="imageLogo" />
@@ -25,7 +25,7 @@ export function Header() {
               <input id="search" type="text" />
             </div>
           </div>
-        </div>
+        </header>
     </>
   )
 } 
