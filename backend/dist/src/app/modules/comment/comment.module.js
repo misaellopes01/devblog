@@ -10,12 +10,14 @@ exports.CommentModule = void 0;
 const common_1 = require("@nestjs/common");
 const comment_service_1 = require("./comment.service");
 const comment_controller_1 = require("./comment.controller");
+const database_module_1 = require("../../../infra/database/database.module");
 let CommentModule = class CommentModule {
 };
 CommentModule = __decorate([
     (0, common_1.Module)({
+        imports: [database_module_1.DatabaseModule],
         controllers: [comment_controller_1.CommentController],
-        providers: [comment_service_1.CommentService]
+        providers: [comment_service_1.CommentService],
     })
 ], CommentModule);
 exports.CommentModule = CommentModule;

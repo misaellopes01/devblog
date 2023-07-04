@@ -5,28 +5,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentService = void 0;
 const common_1 = require("@nestjs/common");
+const comment_repository_1 = require("./repositories/comment.repository");
+const comment_entity_1 = require("./entities/comment.entity");
 let CommentService = class CommentService {
-    create(createCommentDto) {
-        return 'This action adds a new comment';
+    constructor(commentsRepository) {
+        this.commentsRepository = commentsRepository;
     }
-    findAll() {
-        return `This action returns all comment`;
+    async create(createCommentDto) {
+        const newComment = new comment_entity_1.Comment(createCommentDto);
+        return await this.commentsRepository.create(newComment);
     }
-    findOne(id) {
-        return `This action returns a #${id} comment`;
+    async findOne(id) {
+        return await this.commentsRepository.showComment(id);
     }
-    update(id, updateCommentDto) {
-        return `This action updates a #${id} comment`;
+    async update({ commentId, content }) {
+        return await this.commentsRepository.updateComment(commentId, content);
     }
-    remove(id) {
-        return `This action removes a #${id} comment`;
+    async remove(id) {
+        return await this.commentsRepository.deleteComment(id);
     }
 };
 CommentService = __decorate([
-    (0, common_1.Injectable)()
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [comment_repository_1.CommentRepository])
 ], CommentService);
 exports.CommentService = CommentService;
 //# sourceMappingURL=comment.service.js.map

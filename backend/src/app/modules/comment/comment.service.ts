@@ -1,26 +1,27 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
+import { CommentRepository } from './repositories/comment.repository';
+import { Comment } from './entities/comment.entity';
 
 @Injectable()
 export class CommentService {
-  create(createCommentDto: CreateCommentDto) {
-    return 'This action adds a new comment';
+  constructor(private commentsRepository: CommentRepository) {}
+
+  async create(createCommentDto: CreateCommentDto) {
+    const newComment = new Comment(createCommentDto);
+    return await this.commentsRepository.create(newComment);
   }
 
-  findAll() {
-    return `This action returns all comment`;
+  async findOne(id: string) {
+    return await this.commentsRepository.showComment(id);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} comment`;
+  async update({ commentId, content }: UpdateCommentDto) {
+    return await this.commentsRepository.updateComment(commentId, content);
   }
 
-  update(id: number, updateCommentDto: UpdateCommentDto) {
-    return `This action updates a #${id} comment`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} comment`;
+  async remove(id: string) {
+    return await this.commentsRepository.deleteComment(id);
   }
 }

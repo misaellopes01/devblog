@@ -61,7 +61,18 @@ let PrismaPostRepository = class PrismaPostRepository {
                 id: postId,
             },
             include: {
-                Comment: true,
+                Comment: {
+                    select: {
+                        id: true,
+                        content: true,
+                        createdAt: true,
+                        author: {
+                            select: {
+                                name: true,
+                            },
+                        },
+                    },
+                },
                 author: {
                     select: {
                         name: true,

@@ -1,9 +1,11 @@
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
+import { CommentRepository } from './repositories/comment.repository';
 export declare class CommentService {
-    create(createCommentDto: CreateCommentDto): string;
-    findAll(): string;
-    findOne(id: number): string;
-    update(id: number, updateCommentDto: UpdateCommentDto): string;
-    remove(id: number): string;
+    private commentsRepository;
+    constructor(commentsRepository: CommentRepository);
+    create(createCommentDto: CreateCommentDto): Promise<void>;
+    findOne(id: string): Promise<any>;
+    update({ commentId, content }: UpdateCommentDto): Promise<void>;
+    remove(id: string): Promise<void>;
 }

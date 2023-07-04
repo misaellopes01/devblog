@@ -22,17 +22,18 @@ let CommentController = class CommentController {
     create(createCommentDto) {
         return this.commentService.create(createCommentDto);
     }
-    findAll() {
-        return this.commentService.findAll();
-    }
     findOne(id) {
-        return this.commentService.findOne(+id);
+        return this.commentService.findOne(id);
     }
-    update(id, updateCommentDto) {
-        return this.commentService.update(+id, updateCommentDto);
+    update(id, { content }) {
+        const updateCommentProps = {
+            commentId: id,
+            content,
+        };
+        return this.commentService.update(updateCommentProps);
     }
     remove(id) {
-        return this.commentService.remove(+id);
+        return this.commentService.remove(id);
     }
 };
 __decorate([
@@ -42,12 +43,6 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], CommentController.prototype, "create", null);
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], CommentController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),

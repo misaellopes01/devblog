@@ -4,9 +4,8 @@ import { UpdateCommentDto } from './dto/update-comment.dto';
 export declare class CommentController {
     private readonly commentService;
     constructor(commentService: CommentService);
-    create(createCommentDto: CreateCommentDto): string;
-    findAll(): string;
-    findOne(id: string): string;
-    update(id: string, updateCommentDto: UpdateCommentDto): string;
-    remove(id: string): string;
+    create(createCommentDto: CreateCommentDto): Promise<void>;
+    findOne(id: string): Promise<any>;
+    update(id: string, { content }: UpdateCommentDto): Promise<void>;
+    remove(id: string): Promise<void>;
 }
