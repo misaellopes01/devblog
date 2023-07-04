@@ -13,6 +13,7 @@ const user_module_1 = require("./app/modules/user/user.module");
 const database_module_1 = require("./infra/database/database.module");
 const post_module_1 = require("./app/modules/post/post.module");
 const comment_module_1 = require("./app/modules/comment/comment.module");
+const auth_module_1 = require("./app/modules/auth/auth.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -25,6 +26,7 @@ AppModule = __decorate([
             database_module_1.DatabaseModule,
             post_module_1.PostModule,
             comment_module_1.CommentModule,
+            auth_module_1.AuthModule,
         ],
         controllers: [],
         providers: [],

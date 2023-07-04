@@ -4,6 +4,7 @@ import { UserModule } from './app/modules/user/user.module';
 import { DatabaseModule } from './infra/database/database.module';
 import { PostModule } from './app/modules/post/post.module';
 import { CommentModule } from './app/modules/comment/comment.module';
+import { AuthModule } from './app/modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { CommentModule } from './app/modules/comment/comment.module';
     DatabaseModule,
     PostModule,
     CommentModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
