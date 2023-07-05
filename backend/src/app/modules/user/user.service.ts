@@ -26,7 +26,6 @@ export class UserService {
   }
 
   async update(id: string, { name }: UpdateUserDto) {
-    console.log(name);
     return await this.usersRepository.updateUserInfo(id, { name });
   }
 

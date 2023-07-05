@@ -12,4 +12,5 @@ export declare class PostController {
     findOne(id: string): Promise<any>;
     update(id: string, { authorId, title, content }: updatePostDto): Promise<void>;
     remove(id: string): Promise<void>;
+    uploadFile(postId: string, file: any): Promise<void>;
 }

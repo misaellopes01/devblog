@@ -40,5 +40,6 @@ export abstract class PostRepository {
     title?: string,
     content?: string,
   ): Promise<void>;
+  abstract updateCover(postId: string, cover_url: string): Promise<void>;
   abstract deletePost(postId: string): Promise<void>;
 }

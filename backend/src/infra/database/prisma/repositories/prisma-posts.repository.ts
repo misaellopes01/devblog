@@ -101,4 +101,15 @@ export class PrismaPostRepository implements PostRepository {
   async deletePost(postId: string): Promise<void> {
     await this.prisma.post.delete({ where: { id: postId } });
   }
+
+  async updateCover(postId: string, cover_url: string): Promise<void> {
+    await this.prisma.post.update({
+      where: {
+        id: postId,
+      },
+      data: {
+        cover_url,
+      },
+    });
+  }
 }

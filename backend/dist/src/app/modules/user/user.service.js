@@ -32,7 +32,6 @@ let UserService = class UserService {
         return await this.usersRepository.findOne(id);
     }
     async update(id, { name }) {
-        console.log(name);
         return await this.usersRepository.updateUserInfo(id, { name });
     }
     async remove(id) {

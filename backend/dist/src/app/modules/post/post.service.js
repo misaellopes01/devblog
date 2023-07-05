@@ -23,7 +23,8 @@ let PostService = class PostService {
         return createdPost;
     }
     async findAll() {
-        return await this.postsRepository.showPosts();
+        const allPosts = await this.postsRepository.showPosts();
+        return allPosts;
     }
     async findOne(id) {
         const post = await this.postsRepository.showPost(id);
@@ -35,6 +36,9 @@ let PostService = class PostService {
     async update(id, { authorId, content, title }) {
         const postId = id;
         return await this.postsRepository.updatePost(postId, authorId, title, content);
+    }
+    async updateCover(postId, cover_url) {
+        return await this.postsRepository.updateCover(postId, cover_url);
     }
     async remove(id) {
         return await this.postsRepository.deletePost(id);

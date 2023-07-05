@@ -33,5 +33,6 @@ export declare abstract class PostRepository {
     abstract showPosts(): Promise<any[]>;
     abstract showPost(postId: string): Promise<any>;
     abstract updatePost(postId: string, authorId: string, title?: string, content?: string): Promise<void>;
+    abstract updateCover(postId: string, cover_url: string): Promise<void>;
     abstract deletePost(postId: string): Promise<void>;
 }

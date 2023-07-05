@@ -15,7 +15,8 @@ export class PostService {
   }
 
   async findAll() {
-    return await this.postsRepository.showPosts();
+    const allPosts = await this.postsRepository.showPosts();
+    return allPosts;
   }
 
   async findOne(id: string) {
@@ -34,6 +35,10 @@ export class PostService {
       title,
       content,
     );
+  }
+
+  async updateCover(postId: string, cover_url: string) {
+    return await this.postsRepository.updateCover(postId, cover_url);
   }
 
   async remove(id: string) {

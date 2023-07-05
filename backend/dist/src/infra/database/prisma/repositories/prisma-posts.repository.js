@@ -96,6 +96,16 @@ let PrismaPostRepository = class PrismaPostRepository {
     async deletePost(postId) {
         await this.prisma.post.delete({ where: { id: postId } });
     }
+    async updateCover(postId, cover_url) {
+        await this.prisma.post.update({
+            where: {
+                id: postId,
+            },
+            data: {
+                cover_url,
+            },
+        });
+    }
 };
 PrismaPostRepository = __decorate([
     (0, common_1.Injectable)(),

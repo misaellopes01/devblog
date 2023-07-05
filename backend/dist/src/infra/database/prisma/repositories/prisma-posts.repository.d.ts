@@ -9,4 +9,5 @@ export declare class PrismaPostRepository implements PostRepository {
     showPost(postId: string): Promise<any>;
     updatePost(postId: string, authorId: string, title: string, content: string): Promise<void>;
     deletePost(postId: string): Promise<void>;
+    updateCover(postId: string, cover_url: string): Promise<void>;
 }
