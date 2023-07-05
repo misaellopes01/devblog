@@ -43,18 +43,17 @@ export class PrismaPostRepository implements PostRepository {
         },
         author: {
           select: {
-            email: true,
             name: true,
           },
         },
       },
     });
 
-    return postCreated;
+    return postCreated.map(PrismaPostMapper.postsToDomain);
   }
 
   async showPost(postId: string): Promise<any> {
-    return await this.prisma.post.findUnique({
+    const post = await this.prisma.post.findUnique({
       where: {
         id: postId,
       },
@@ -78,6 +77,9 @@ export class PrismaPostRepository implements PostRepository {
         },
       },
     });
+
+    return PrismaPostMapper.postToDomain(post);
+    // return post;
   }
 
   async updatePost(

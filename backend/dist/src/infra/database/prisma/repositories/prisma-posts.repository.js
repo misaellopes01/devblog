@@ -47,16 +47,15 @@ let PrismaPostRepository = class PrismaPostRepository {
                 },
                 author: {
                     select: {
-                        email: true,
                         name: true,
                     },
                 },
             },
         });
-        return postCreated;
+        return postCreated.map(prisma_post_1.PrismaPostMapper.postsToDomain);
     }
     async showPost(postId) {
-        return await this.prisma.post.findUnique({
+        const post = await this.prisma.post.findUnique({
             where: {
                 id: postId,
             },
@@ -80,6 +79,7 @@ let PrismaPostRepository = class PrismaPostRepository {
                 },
             },
         });
+        return prisma_post_1.PrismaPostMapper.postToDomain(post);
     }
     async updatePost(postId, authorId, title, content) {
         await this.prisma.post.updateMany({

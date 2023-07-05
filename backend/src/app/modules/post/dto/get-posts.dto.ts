@@ -3,14 +3,32 @@ export interface MapPostsToDomainProps {
   title: string;
   content: string;
   cover_url: string | null;
-  authorId: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
   author: {
-    email: string;
     name: string;
   };
   _count: {
     Comment: number;
   };
+}
+
+export interface MapPostToDomainProps {
+  id: string;
+  title: string;
+  content: string;
+  cover_url: string;
+  createdAt: Date;
+  updatedAt: Date;
+  author: {
+    name: string;
+  };
+  Comment: {
+    id: string;
+    content: string;
+    createdAt: Date;
+    author: {
+      name: string;
+    };
+  }[];
 }
