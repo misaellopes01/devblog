@@ -18,6 +18,7 @@ const post_service_1 = require("./post.service");
 const platform_express_1 = require("@nestjs/platform-express");
 const multer_1 = require("multer");
 const path_1 = require("path");
+const guard_1 = require("../auth/guard");
 let PostController = class PostController {
     constructor(postService) {
         this.postService = postService;
@@ -53,6 +54,7 @@ let PostController = class PostController {
     }
 };
 __decorate([
+    (0, common_1.UseGuards)(guard_1.JwtGuard),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -73,6 +75,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PostController.prototype, "findOne", null);
 __decorate([
+    (0, common_1.UseGuards)(guard_1.JwtGuard),
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -81,6 +84,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PostController.prototype, "update", null);
 __decorate([
+    (0, common_1.UseGuards)(guard_1.JwtGuard),
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -88,6 +92,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PostController.prototype, "remove", null);
 __decorate([
+    (0, common_1.UseGuards)(guard_1.JwtGuard),
     (0, common_1.Patch)('uploads/post/cover/:postId'),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file', {
         storage: (0, multer_1.diskStorage)({

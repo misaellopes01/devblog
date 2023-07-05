@@ -6,11 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserProfileDTO } from './mappers/userProfileDTO';
+import { JwtGuard } from '../auth/guard';
 
 @Controller('user')
 export class UserController {
@@ -27,17 +29,19 @@ export class UserController {
     const users = await this.userService.findAll();
     return users.map(UserProfileDTO.toDomain);
   }
-
+  @UseGuards(JwtGuard)
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return this.userService.findOne(id);
   }
   // features not coded
+  @UseGuards(JwtGuard)
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(id, updateUserDto);
   }
 
+  @UseGuards(JwtGuard)
   @Delete(':id')
   async remove(@Param('id') id: string) {
     return this.userService.remove(id);

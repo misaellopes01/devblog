@@ -8,19 +8,20 @@ import {
   Delete,
   UseInterceptors,
   UploadedFile,
+  UseGuards,
 } from '@nestjs/common';
 import { PostService } from './post.service';
-import { CreatePostDto, updatePostDto } from './dto/create-post.dto';
+import { updatePostDto } from './dto/create-post.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
-import { GetUser } from '../auth/decorator';
-import { UserProfileDTO } from '../user/mappers/userProfileDTO';
+import { JwtGuard } from '../auth/guard';
 
 @Controller('post')
 export class PostController {
   constructor(private readonly postService: PostService) {}
 
+  @UseGuards(JwtGuard)
   @Post()
   async create(@Body() { authorId, content, title }) {
     const createPostDto = {
@@ -46,6 +47,7 @@ export class PostController {
     return this.postService.findOne(id);
   }
 
+  @UseGuards(JwtGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -59,12 +61,14 @@ export class PostController {
     return this.postService.update(id, updatePostDto);
   }
 
+  @UseGuards(JwtGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.postService.remove(id);
   }
 
   // Upload Post Cover
+  @UseGuards(JwtGuard)
   @Patch('uploads/post/cover/:postId')
   @UseInterceptors(
     FileInterceptor('file', {
