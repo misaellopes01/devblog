@@ -17,9 +17,60 @@ import Post3Image from "../src/assets/post3.png";
 import Post4Image from "../src/assets/post4.png";
 import Post5Image from "../src/assets/post5.png";
 import { PromPost } from "./components/PromPost/PromPost";
+import { useState } from "react";
 
+const posts = [
+  {
+    
+    id: Math.random().toString(),
+    img: PostImage,
+    title: "Polluters",
+    author: "Mariano Capiliku",
+    content:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa impedit voluptatum eaque similique facilis error id. Repellendus, consequatur suscipit! Dicta dolores libero iusto ratione molestias sequi adipisci corrupti fuga repellendus!",
+  },
+
+  {
+    id: Math.random().toString(),
+    img: Post2Image,
+    title: "Corona Virus",
+    author: "Miseal Lopes",
+    content:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa impedit voluptatum eaque similique facilis error id. Repellendus, consequatur suscipit! Dicta dolores libero iusto ratione molestias sequi adipisci corrupti fuga repellendus!",
+  },
+
+  {
+    id: Math.random().toString(),
+    img: Post3Image,
+    title: "Dev Conference 2023",
+    author: "Chelsea de Carvalho",
+    content:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa impedit voluptatum eaque similique facilis error id. Repellendus, consequatur suscipit! Dicta dolores libero iusto ratione molestias sequi adipisci corrupti fuga repellendus!",
+  },
+
+  {
+    id: Math.random().toString(),
+    img: Post4Image,
+    title: "Arsenal from Inside",
+    author: "Scanner Afonso",
+    content:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa impedit voluptatum eaque similique facilis error id. Repellendus, consequatur suscipit! Dicta dolores libero iusto ratione molestias sequi adipisci corrupti fuga repellendus!",
+  },
+  {
+    id: Math.random().toString(),
+    img: Post5Image,
+    title: "Angola a country to think",
+    author: "Mario Vicente",
+    content:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa impedit voluptatum eaque similique facilis error id. Repellendus, consequatur suscipit! Dicta dolores libero iusto ratione molestias sequi adipisci corrupti fuga repellendus!",
+  },
+];
 
 export function App() {
+
+  const [post, setPost] = useState(posts)
+
+  
   return (
     <>
       <Header />
@@ -27,25 +78,27 @@ export function App() {
       <PostsHeader />
 
       <div className="posts-wrapper">
-        <RecentsPosts
-          img={PostImage}
-          title="Polluters"
-          author="Mariano Capiliku"
-          content=" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati magni saepe aperiam voluptatem repellat nostrum illum, voluptatibus est corporis qui ea quia cumque fugiat sit molestiae hic, dolor corrupti accusamus."
-        />
+          {
+              posts.filter((post, index) => index <= 1 ).map(post => {
 
-        <RecentsPosts
-          img={Post2Image}
-          title="Corona Virus"
-          author="Misael Lopes"
-          content="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora ipsum consequuntur nostrum quae quibusdam. Voluptatem, reiciendis quo quod dolorem ea, earum nulla consectetur fuga doloremque quos, blanditiis praesentium exercitationem unde? "
-        />
+                return(
+                  <RecentsPosts 
+                  img={post.img}
+                  title={post.title}
+                  author={post.author}
+                  content={post.content.substring(0, 220).concat("...")}
+                  key={post.id}
+                />
+                )
+              })
+              
+          }
+        
       </div>
 
-      <Divider />
-      {/* <div className="divisor-wrapper">
+      <div className="divisor-wrapper">
         <div className="divisor"></div>
-      </div> */}
+      </div>
 
       <div className="more-content">
         <MoreOptions />
@@ -53,31 +106,47 @@ export function App() {
 
       <div className="posts-wrapper">
         <div className="posts uni">
-          <PromPost
-            img={Post3Image}
-            title="Dev Conference 2023"
-            author="Diego Fernandes"
-            content="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora ipsum consequuntur nostrum quae quibusdam. Voluptatem, reiciendis quo quod dolorem ea, earum nulla consectetur fuga doloremque quos, blanditiis praesentium exercitationem unde? "
-          />
+
+           {
+              posts.filter((post, index) => index === 2).map(post => {
+                return (
+                  
+                  <PromPost 
+                  img={post.img}
+                  title={post.title}
+                  author={post.author}
+                  content={post.content.substring(0, 220).concat("...")}
+                  key={post.id}
+                />
+                )
+              })
+
+
+           } 
+
         </div>
 
         <div className="side-posts">
-          <SmallPosts
-            img={Post4Image}
-            title="Arsenal from Inside"
-            author="Mario Vicente"
-            content=" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati magni saepe aperiam voluptatem repellat nostrum illum, voluptatibus est corporis qui ea quia cumque fugiat sit molestiae hic, dolor corrupti accusamus."
-          />
-          <SmallPosts
-            img={Post5Image}
-            title="Angola a country to think"
-            author="Chelsea de Carvalho"
-            content=" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati magni saepe aperiam voluptatem repellat nostrum illum, voluptatibus est corporis qui ea quia cumque fugiat sit molestiae hic, dolor corrupti accusamus."
-          />
+
+           {
+            posts.filter((post, index) => (index > 2 && index <= 4)).map(post => {
+              return (
+                <SmallPosts 
+                  img={post.img}
+                  title={post.title}
+                  author={post.author}
+                  content={post.content.substring(0, 220).concat("...")}
+                  key={post.id}
+                />
+              )
+            })
+
+
+           } 
         </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </>
   );
 }

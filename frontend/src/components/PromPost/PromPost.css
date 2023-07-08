@@ -5,8 +5,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50.9rem;
-  height: 60.5rem;
+  width: 509px;
+  height: 605px;
   border-radius: 7px;
   border: 0.761px solid rgba(0, 0, 0, 0.50);
   background: #FFF;
@@ -14,8 +14,8 @@
 }
 
 .prom-post > img {
-  width: 52.2rem;
-  height: 34.4rem;
+  width: 522px;
+  height: 365px;
 }
 
 .prom-post-info {
