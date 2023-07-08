@@ -1,4 +1,4 @@
-export interface MapPostsToDomainProps {
+export interface PostsToDomainDTO {
     id: string;
     title: string;
     content: string;
@@ -12,7 +12,7 @@ export interface MapPostsToDomainProps {
         Comment: number;
     };
 }
-export interface MapPostToDomainProps {
+export interface PostToDomainDTO {
     id: string;
     title: string;
     content: string;

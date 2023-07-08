@@ -1,7 +1,7 @@
 import { ConfigService } from '@nestjs/config';
 import {
-  MapPostToDomainProps,
-  MapPostsToDomainProps,
+  PostToDomainDTO,
+  PostsToDomainDTO,
 } from 'src/app/modules/post/dto/get-posts.dto';
 import { Post } from 'src/app/modules/post/entities/post.entity';
 import { CreatedPostProps } from 'src/app/modules/post/repositories/post.repository';
@@ -37,7 +37,7 @@ export class PrismaPostMapper {
     };
   }
 
-  static postsToDomain(raw: any): MapPostsToDomainProps {
+  static postsToDomain(raw: any): PostsToDomainDTO {
     return {
       id: raw.id,
       title: raw.title,
@@ -54,7 +54,7 @@ export class PrismaPostMapper {
     };
   }
 
-  static postToDomain(raw: any): MapPostToDomainProps {
+  static postToDomain(raw: any): PostToDomainDTO {
     return {
       id: raw.id,
       title: raw.title,

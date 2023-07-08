@@ -5,7 +5,7 @@ export declare class CommentController {
     private readonly commentService;
     constructor(commentService: CommentService);
     create(createCommentDto: CreateCommentDto): Promise<void>;
-    findOne(id: string): Promise<any>;
+    findOne(id: string): Promise<import("./dto/get-comment.dto").CommentPropsDTO>;
     update(id: string, { content }: UpdateCommentDto): Promise<void>;
     remove(id: string): Promise<void>;
 }

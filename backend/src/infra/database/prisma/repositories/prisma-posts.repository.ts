@@ -6,6 +6,10 @@ import {
 } from 'src/app/modules/post/repositories/post.repository';
 import { Post } from 'src/app/modules/post/entities/post.entity';
 import { PrismaPostMapper } from '../mappers/prisma-post';
+import {
+  PostToDomainDTO,
+  PostsToDomainDTO,
+} from 'src/app/modules/post/dto/get-posts.dto';
 
 @Injectable()
 export class PrismaPostRepository implements PostRepository {
@@ -33,7 +37,7 @@ export class PrismaPostRepository implements PostRepository {
     return PrismaPostMapper.toDomain(postCreated);
   }
 
-  async showPosts(): Promise<any[]> {
+  async showPosts(): Promise<PostsToDomainDTO[]> {
     const postCreated = await this.prisma.post.findMany({
       include: {
         _count: {
@@ -52,7 +56,7 @@ export class PrismaPostRepository implements PostRepository {
     return postCreated.map(PrismaPostMapper.postsToDomain);
   }
 
-  async showPost(postId: string): Promise<any> {
+  async showPost(postId: string): Promise<PostToDomainDTO> {
     const post = await this.prisma.post.findUnique({
       where: {
         id: postId,

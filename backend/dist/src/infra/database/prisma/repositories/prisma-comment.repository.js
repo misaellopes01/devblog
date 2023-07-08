@@ -22,7 +22,24 @@ let PrismaCommentRepository = class PrismaCommentRepository {
         await this.prisma.comment.create({ data: persistenceComment });
     }
     async showComment(commentId) {
-        return await this.prisma.comment.findUnique({ where: { id: commentId } });
+        return await this.prisma.comment.findUnique({
+            where: { id: commentId },
+            select: {
+                id: true,
+                content: true,
+                createdAt: true,
+                author: {
+                    select: {
+                        email: true,
+                    },
+                },
+                post: {
+                    select: {
+                        title: true,
+                    },
+                },
+            },
+        });
     }
     async updateComment(commentId, content) {
         await this.prisma.comment.update({

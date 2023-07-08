@@ -19,9 +19,6 @@ export declare class AuthService {
     updateUserRefreshToken(user_id: string, refresh_token: string): Promise<void>;
     signin({ email, password }: AuthLoginDTO): Promise<Tokens>;
     logout(user_id: string): Promise<void>;
-    refreshToken(user_id: string, rt: string): Promise<{
-        access_token: string;
-        refresh_token: string;
-    }>;
+    refreshToken(user_id: string, rt: string): Promise<Tokens>;
 }
 export {};

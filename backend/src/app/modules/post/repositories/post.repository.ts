@@ -1,3 +1,4 @@
+import { PostToDomainDTO, PostsToDomainDTO } from '../dto/get-posts.dto';
 import { Post } from '../entities/post.entity';
 
 export interface CreatedPostProps {
@@ -32,8 +33,8 @@ export interface AllPostsProps {
 
 export abstract class PostRepository {
   abstract create(post: Post): Promise<CreatedPostProps>;
-  abstract showPosts(): Promise<any[]>;
-  abstract showPost(postId: string): Promise<any>;
+  abstract showPosts(): Promise<PostsToDomainDTO[]>;
+  abstract showPost(postId: string): Promise<PostToDomainDTO>;
   abstract updatePost(
     postId: string,
     authorId: string,

@@ -8,8 +8,8 @@ export declare class PostController {
         content: any;
         title: any;
     }): Promise<import("./repositories/post.repository").CreatedPostProps>;
-    findAll(): Promise<any[]>;
-    findOne(id: string): Promise<any>;
+    findAll(): Promise<import("./dto/get-posts.dto").PostsToDomainDTO[]>;
+    findOne(id: string): Promise<import("./dto/get-posts.dto").PostToDomainDTO>;
     update(id: string, { authorId, title, content }: updatePostDto): Promise<void>;
     remove(id: string): Promise<void>;
     uploadFile(postId: string, file: any): Promise<void>;

@@ -1,5 +1,5 @@
 import { ConfigService } from '@nestjs/config';
-import { MapPostToDomainProps, MapPostsToDomainProps } from 'src/app/modules/post/dto/get-posts.dto';
+import { PostToDomainDTO, PostsToDomainDTO } from 'src/app/modules/post/dto/get-posts.dto';
 import { Post } from 'src/app/modules/post/entities/post.entity';
 import { CreatedPostProps } from 'src/app/modules/post/repositories/post.repository';
 type ModifiedCreatedPostProps = Omit<CreatedPostProps, 'updatedAt'> & {
@@ -17,7 +17,7 @@ export declare class PrismaPostMapper {
         createdAt: Date;
     };
     static toDomain(raw: ModifiedCreatedPostProps): CreatedPostProps;
-    static postsToDomain(raw: any): MapPostsToDomainProps;
-    static postToDomain(raw: any): MapPostToDomainProps;
+    static postsToDomain(raw: any): PostsToDomainDTO;
+    static postToDomain(raw: any): PostToDomainDTO;
 }
 export {};
