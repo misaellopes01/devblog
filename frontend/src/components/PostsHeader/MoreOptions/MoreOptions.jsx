@@ -5,7 +5,7 @@ export function MoreOptions() {
 
   return (
     <>
-      <div className="more-options">
+      <div className="more-options margin-uni">
           <a href="#">
           <span>Mais</span>
           <ArrowRight size={12}/>

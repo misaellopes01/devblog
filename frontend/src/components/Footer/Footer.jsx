@@ -7,7 +7,7 @@ export function Footer() {
     <>
       <footer className="footer">
         <img className="img-footer" src={WhiteLogo} alt="" />
-        <span className="copy-right"> DevTeam 2023. Building the future. </span>
+        <span className="copy-right "> Awetu Technology&#169; 2023. Building the future. </span>
         <span></span>
       </footer>
     

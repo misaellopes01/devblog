@@ -1,15 +1,14 @@
-import "./PromPost.css"
+import "./PromPost.css";
 
 export function PromPost(props) {
-
   return (
     <>
       <div className="prom-post-content-wrapper">
+        <a href="#">
           <div className="prom-post">
             <img src={props.img} alt="" />
 
             <div className="prom-post-info">
-
               <span>{props.title}</span>
               <div className="prom-author">
                 <span>{props.author}</span>
@@ -18,12 +17,11 @@ export function PromPost(props) {
             </div>
 
             <div className="prom-post-content">
-              <p>
-                {props.content}
-              </p>
+              <p>{props.content}</p>
             </div>
           </div>
-        </div>
+        </a>
+      </div>
     </>
-  )
+  );
 }

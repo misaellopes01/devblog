@@ -17,7 +17,8 @@ import Post3Image from "../src/assets/post3.png";
 import Post4Image from "../src/assets/post4.png";
 import Post5Image from "../src/assets/post5.png";
 import { PromPost } from "./components/PromPost/PromPost";
-import { useState } from "react";
+import { NewPost } from "./components/NewPost/NewPost";
+
 
 const posts = [
   {
@@ -67,9 +68,6 @@ const posts = [
 ];
 
 export function App() {
-
-  const [post, setPost] = useState(posts)
-
   
   return (
     <>
@@ -96,9 +94,11 @@ export function App() {
         
       </div>
 
-      <div className="divisor-wrapper">
+      <Divider/>
+
+      {/* <div className="divisor-wrapper">
         <div className="divisor"></div>
-      </div>
+      </div> */}
 
       <div className="more-content">
         <MoreOptions />
@@ -120,7 +120,6 @@ export function App() {
                 />
                 )
               })
-
 
            } 
 
@@ -145,7 +144,6 @@ export function App() {
            } 
         </div>
       </div>
-
       <Footer />
     </>
   );

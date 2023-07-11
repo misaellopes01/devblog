@@ -11,3 +11,31 @@
   line-height: 5.4rem;
 }
 
+.create-button-wrapper {
+  margin-right: 12rem
+}
+
+.create-button {
+  /* width: 8rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: .5rem 2rem;
+  border: 0;
+  background-color: var(--black-color);
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-button:hover {
+  filter: brightness(2)
+}
+
+
+
+
+
+
+
