@@ -17,12 +17,10 @@ import Post3Image from "../src/assets/post3.png";
 import Post4Image from "../src/assets/post4.png";
 import Post5Image from "../src/assets/post5.png";
 import { PromPost } from "./components/PromPost/PromPost";
-import { NewPost } from "./components/NewPost/NewPost";
+import { useState } from "react";
 
-
-const posts = [
+const initialPosts = [
   {
-    
     id: Math.random().toString(),
     img: PostImage,
     title: "Polluters",
@@ -68,33 +66,38 @@ const posts = [
 ];
 
 export function App() {
-  
+  const [posts, setPosts] = useState(initialPosts);
+
+  const onAddNewPosrDataHandler = (newPostData) => {
+    console.log(newPostData)
+    setPosts((prevPosts) => {
+      return [newPostData, ...prevPosts];
+    });
+  };
+
   return (
     <>
       <Header />
       <Divider />
-      <PostsHeader />
+      <PostsHeader onAddNewPostData={onAddNewPosrDataHandler} />
 
       <div className="posts-wrapper">
-          {
-              posts.filter((post, index) => index <= 1 ).map(post => {
-
-                return(
-                  <RecentsPosts 
-                  img={post.img}
-                  title={post.title}
-                  author={post.author}
-                  content={post.content.substring(0, 220).concat("...")}
-                  key={post.id}
-                />
-                )
-              })
-              
-          }
-        
+        {posts
+          .filter((post, index) => index <= 1)
+          .map((post) => {
+            return (
+              <RecentsPosts
+                img={post.img}
+                title={post.title}
+                author={post.author}
+                content={post.content.substring(0, 220).concat("...")}
+                key={post.id}
+              />
+            );
+          })}
       </div>
 
-      <Divider/>
+      <Divider />
 
       {/* <div className="divisor-wrapper">
         <div className="divisor"></div>
@@ -106,42 +109,35 @@ export function App() {
 
       <div className="posts-wrapper">
         <div className="posts uni">
-
-           {
-              posts.filter((post, index) => index === 2).map(post => {
-                return (
-                  
-                  <PromPost 
+          {posts
+            .filter((post, index) => index === 2)
+            .map((post) => {
+              return (
+                <PromPost
                   img={post.img}
                   title={post.title}
                   author={post.author}
                   content={post.content.substring(0, 220).concat("...")}
                   key={post.id}
                 />
-                )
-              })
-
-           } 
-
+              );
+            })}
         </div>
 
         <div className="side-posts">
-
-           {
-            posts.filter((post, index) => (index > 2 && index <= 4)).map(post => {
+          {posts
+            .filter((post, index) => index > 2 && index <= 4)
+            .map((post) => {
               return (
-                <SmallPosts 
+                <SmallPosts
                   img={post.img}
                   title={post.title}
                   author={post.author}
                   content={post.content.substring(0, 220).concat("...")}
                   key={post.id}
                 />
-              )
-            })
-
-
-           } 
+              );
+            })}
         </div>
       </div>
       <Footer />

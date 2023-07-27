@@ -1,11 +1,13 @@
 import "./RecentsPosts.css";
 
 export function RecentsPosts(props) {
+  
+
   return (
     <>
-      <div className="post-content-wrapper">
-        <a href="#">
-          <div className="post">
+      <div className="">
+        <a href="#" className="keen-slider__slide">
+          <div className="post ">
             <img src={props.img} alt="" />
 
             <div className="post-info">

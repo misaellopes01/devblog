@@ -48,11 +48,11 @@ input {
 
 
 /* Divisor */
-.divisor-wrapper {
+/* .divisor-wrapper {
   display: grid;
   place-content: center;
   margin-bottom: 8rem;
-}
+} */
 
 .divisor {
   height: 0.3rem;

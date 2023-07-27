@@ -3,7 +3,12 @@ import * as Dialog from '@radix-ui/react-dialog';
 import "./PostsHeader.css"
 import { NewPost } from "../NewPost/NewPost";
 
-export function PostsHeader() {
+export function PostsHeader(props) {
+
+  const saveNewPostData = (newPostData) => {
+    props.onAddNewPostData(newPostData)
+  }
+
   return (
     <>
       <div className="posts-header margin-uni ">
@@ -13,7 +18,7 @@ export function PostsHeader() {
           <Dialog.Trigger asChild>
               <button className='create-button'>Criar Postagem</button>
           </Dialog.Trigger>
-          <NewPost/>
+          <NewPost onSaveNewPostData = {saveNewPostData} />
         </Dialog.Root>
         </div>
         

@@ -1,0 +1,112 @@
+.content-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4.5rem;
+  /
+}
+
+.input-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30rem;
+  height: 30rem;
+  border-radius: 10px;
+  border: 1px dashed rgba(12, 12, 12, 0.50);
+  background: rgba(12, 12, 12, 0.00);
+}
+
+#input-file-upload {
+  display: none;
+}
+
+.upload-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem
+
+}
+
+.upload-image img {
+  width: 13rem;
+  height: 11.5rem;
+
+}
+
+.upload-image p {
+  color: #0C0C0C;
+  font-size: 1.2rem;;
+  line-height: normal;
+  letter-spacing: -0.225px;
+}
+
+.upload-image span {
+  font-weight: 600;
+}
+
+
+.input-info {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  justify-content: center;
+}
+
+
+.input-info label {
+  color: var(black-color);
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.3px;
+}
+
+.input-info input {
+  width: 35rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(12, 12, 12, 0.50);
+  background: rgba(12, 12, 12, 0.00);
+  outline: none;
+  font-family: inherit;
+  
+}
+
+.input-info textarea {
+  width: 35rem;
+  border-radius: 8px;
+  border: 1px solid rgba(12, 12, 12, 0.50);
+  background: rgba(12, 12, 12, 0.00);
+  outline: none;
+  font-family: inherit;
+  padding: 1.5rem;
+  resize: none;
+  word-break: break-all;
+
+}
+
+.button {
+  display:flex;
+  justify-content: flex-end;
+}
+
+.post-button {
+  color: white;
+  width: 20%;
+  padding: .8rem;
+  border-radius: 8px;
+  border: none;
+  background: rgba(12, 12, 12, 0.50);
+  margin-top: 1.5rem;
+  transition: all .4s;
+  cursor: pointer;
+}
+
+.post-button:hover {
+  background: #0c0c0c;
+}
