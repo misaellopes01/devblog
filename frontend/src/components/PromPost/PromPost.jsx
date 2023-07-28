@@ -1,6 +1,11 @@
-import "./PromPost.css";
+import { formatDistanceToNow} from "date-fns";
+import { useState } from "react";
 
+import "./PromPost.css";
 export function PromPost(props) {
+
+  const [date, setDate] = useState(new Date().toDateString())
+ 
   return (
     <>
       <div className="prom-post-content-wrapper">
@@ -12,7 +17,7 @@ export function PromPost(props) {
               <span>{props.title}</span>
               <div className="prom-author">
                 <span>{props.author}</span>
-                <span> 2 min ago</span>
+                <span>{date}</span>
               </div>
             </div>
 

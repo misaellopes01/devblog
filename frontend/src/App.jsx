@@ -69,7 +69,6 @@ export function App() {
   const [posts, setPosts] = useState(initialPosts);
 
   const onAddNewPosrDataHandler = (newPostData) => {
-    console.log(newPostData)
     setPosts((prevPosts) => {
       return [newPostData, ...prevPosts];
     });

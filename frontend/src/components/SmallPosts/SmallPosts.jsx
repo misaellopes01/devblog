@@ -1,6 +1,11 @@
+import { formatDistanceToNow, addDays } from "date-fns";
+import { useState } from "react";
+
 import "./SmallPosts.css";
 
 export function SmallPosts(props) {
+  let [date, setDate] = useState(new Date().toDateString())
+
   return (
     <>
       <div className="small-post-content-wrapper">
@@ -12,7 +17,7 @@ export function SmallPosts(props) {
               <span>{props.title}</span>
               <div className="small-author">
                 <span>{props.author}</span>
-                <span> 2 min ago</span>
+                <span>{date}</span>
               </div>
             </div>
 

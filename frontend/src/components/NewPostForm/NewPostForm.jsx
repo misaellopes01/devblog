@@ -30,7 +30,7 @@ export function NewPostForm(props) {
 
     const postData = {
       id: Math.random().toString(),
-      author: "Mariano Capiliku",
+      author: "Admin",
       img: postImage,
       title: postTitle,
       content: postDescription,

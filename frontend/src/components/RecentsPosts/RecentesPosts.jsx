@@ -1,8 +1,16 @@
+
+import { formatDistanceToNow } from "date-fns";
+import { useState } from "react";
+
 import "./RecentsPosts.css";
-
 export function RecentsPosts(props) {
-  
 
+  const [date, setDate] = useState(new Date())
+
+  const dateFormatted = formatDistanceToNow(date)
+  const upDateDateHandler = () => {
+    setDate(dateFormatted)
+  }
   return (
     <>
       <div className="">
@@ -14,7 +22,7 @@ export function RecentsPosts(props) {
               <span>{props.title}</span>
               <div className="author">
                 <span>{props.author}</span>
-                <span> 2 min ago</span>
+                <span onChange={upDateDateHandler}> {dateFormatted} min ago</span>
               </div>
             </div>
 
