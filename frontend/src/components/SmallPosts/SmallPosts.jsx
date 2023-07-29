@@ -1,5 +1,6 @@
 import { formatDistanceToNow, addDays } from "date-fns";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./SmallPosts.css";
 
@@ -9,7 +10,7 @@ export function SmallPosts(props) {
   return (
     <>
       <div className="small-post-content-wrapper">
-        <a href="#">
+        <Link to={`/${props.title}`}>
           <div className="small-post">
             <img src={props.img} alt="" />
 
@@ -25,7 +26,7 @@ export function SmallPosts(props) {
               <p>{props.content}</p>
             </div>
           </div>
-        </a>
+        </Link>
       </div>
     </>
   );

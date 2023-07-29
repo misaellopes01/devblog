@@ -1,6 +1,7 @@
 
 import { formatDistanceToNow } from "date-fns";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./RecentsPosts.css";
 export function RecentsPosts(props) {
@@ -14,7 +15,7 @@ export function RecentsPosts(props) {
   return (
     <>
       <div className="">
-        <a href="#" className="keen-slider__slide">
+        <Link  to= {`/${props.title}`} className="keen-slider__slide">
           <div className="post ">
             <img src={props.img} alt="" />
 
@@ -30,7 +31,7 @@ export function RecentsPosts(props) {
               <p>{props.content}</p>
             </div>
           </div>
-        </a>
+        </Link>
       </div>
     </>
   );

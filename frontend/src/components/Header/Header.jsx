@@ -1,6 +1,8 @@
 import './Header.css'
 import imgLogo from "../../assets/devBlogLogo.svg"
 
+import { Link } from 'react-router-dom'
+
 export function Header() {
   return (
     <>
@@ -12,10 +14,10 @@ export function Header() {
             <div className="menu">
                 <nav className=" menu-items">
                   <ul className="menu-item" >
-                    <li> <a href="#">Inicio</a></li>
-                    <li> <a href="#">Galeria</a></li>
-                    <li> <a href="#">Sobre</a></li>
-                    <li> <a href="#">Perfil</a></li>
+                    <li> <Link to= "/">Inicio</Link></li>
+                    <li> <Link to="/gallery">Galeria</Link></li>
+                    <li> <Link to="/about">Sobre</Link></li>
+                    <li> <Link to="/profile">Perfil</Link></li>
                   </ul>
                 </nav>
             </div>

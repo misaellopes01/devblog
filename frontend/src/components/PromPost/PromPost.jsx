@@ -1,5 +1,6 @@
 import { formatDistanceToNow} from "date-fns";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./PromPost.css";
 export function PromPost(props) {
@@ -9,7 +10,7 @@ export function PromPost(props) {
   return (
     <>
       <div className="prom-post-content-wrapper">
-        <a href="#">
+        <Link to = {`/${props.title}`}>
           <div className="prom-post">
             <img src={props.img} alt="" />
 
@@ -25,7 +26,7 @@ export function PromPost(props) {
               <p>{props.content}</p>
             </div>
           </div>
-        </a>
+        </Link>
       </div>
     </>
   );
